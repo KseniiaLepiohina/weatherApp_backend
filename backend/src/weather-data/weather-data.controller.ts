@@ -32,4 +32,19 @@ export class WeatherDataController {
     return this.weatherDataService.getWeatherForecastByLocation(latNum, lngNum);
   }
 
+  @Get('getWeatherByCity')
+  async weatherByCity(
+    @Query('cityName') cityname:string,
+    @Query('countryCode') countrycode:string
+  ) {
+    return this.weatherDataService.getWeatherByCity(cityname,countrycode);
+  }
+  @Get('forecastByCityName') 
+  async forecastByCity(
+    @Query('cityName') cityname:string,
+    @Query('countryCode') countrycode:string
+  ) {
+    return this.weatherDataService.getForecastByCity(cityname,countrycode)
+  }
+
 }
