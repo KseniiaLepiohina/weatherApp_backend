@@ -1,9 +1,0 @@
-version: '4.4'
-
-services:
-  app:
-    build:  .
-    ports:
-      - "3000:5000"
-    environment:
-      - NODE_ENV=production
