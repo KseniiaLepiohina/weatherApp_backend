@@ -7,17 +7,9 @@ import * as express from 'express';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
-      origin: ['http://localhost:3000', 'http://localhost:3001'],
-      credentials: true,
-    });;
-
-   app.use(express.static(join(__dirname, '../frontend/build')));
-    app.use(/^(?!\/weather-data).*$/, (req, res) => {
-    res.sendFile(join(__dirname, '../frontend/build', 'index.html'));
-  });
-  // app.use('*', (req, res) => {
-  //    res.sendFile(join(__dirname, '../frontend/build', 'index.html'));
-  //  });
+          origin: 'https://weather-app-one-steel-71.vercel.app',
+          credentials: true,
+      });
 
   await app.listen(process.env.PORT ?? 5000);
 
