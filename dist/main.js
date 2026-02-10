@@ -9,15 +9,16 @@ async function bootstrap() {
         .setTitle('Weather forecast')
         .setDescription('The weather forecast API description')
         .setVersion('1.0')
-        .addTag('weather, OpenWeatherApi')
+        .addTag('weather')
         .build();
-    const documentFactory = () => swagger_1.SwaggerModule.createDocument(app, config);
-    swagger_1.SwaggerModule.setup('api', app, documentFactory);
+    const document = () => swagger_1.SwaggerModule.createDocument(app, config);
+    swagger_1.SwaggerModule.setup('api', app, document);
     app.enableCors({
         origin: 'https://weather-app-one-steel-71.vercel.app',
         credentials: true,
     });
-    await app.listen('https://weather-app-backend-agme.onrender.com');
+    const port = process.env.PORT || 5000;
+    await app.listen(port, '0.0.0.0');
 }
 bootstrap();
 //# sourceMappingURL=main.js.map
