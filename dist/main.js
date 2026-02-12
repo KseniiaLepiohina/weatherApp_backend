@@ -11,7 +11,7 @@ async function bootstrap() {
         .setVersion('1.0')
         .addTag('weather')
         .build();
-    const document = () => swagger_1.SwaggerModule.createDocument(app, config);
+    const document = swagger_1.SwaggerModule.createDocument(app, config);
     swagger_1.SwaggerModule.setup('api', app, document);
     app.enableCors({
         origin: 'https://weather-app-one-steel-71.vercel.app',
@@ -19,6 +19,7 @@ async function bootstrap() {
     });
     const port = process.env.PORT || 5000;
     await app.listen(port, '0.0.0.0');
+    console.log(`Application is running on: http://localhost:${port}/api`);
 }
 bootstrap();
 //# sourceMappingURL=main.js.map
